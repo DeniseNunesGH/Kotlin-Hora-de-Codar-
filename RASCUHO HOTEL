@@ -1,0 +1,63 @@
+package Hotel //ao  criar um novo arquivo, usar a função "package hotel" para achar a função do hotel, o package serve para separar e organizar todos os arquivos dentro de um arquivo
+val senhaCorreta = 2678
+var hotel = "Transilvânia"
+val quartos = arrayOf(20)
+
+fun main() {
+    // Função principal que chama a função inicio().
+    iniciar()
+}
+
+fun iniciar() {
+
+    println("Informe seu nome: ")
+    var nome = readln().mutableListOf()
+
+    println("Olá $nome, digite a senha de acesso: ")
+    var senha = readln().toInt()
+    if (senha != senhaCorreta) {
+        return
+    }
+
+    println("Bem vindo ao $hotel! É um prazer ter você aqui, $nome\n") //1.
+    println("""Escolha uma opção:
+        |1. Quartos
+        |2. Cadastrar Hóspedes
+        |3. Abastecimento de automóveis
+        |4. Sair
+    """.trimMargin())
+    // A varival escolha armazena a opção escolhida pelo usuário.
+    // uma variavel local é utilizada apenas dentro da função inicio().
+    val escolha = readln().toIntOrNull()
+    when (escolha) {
+        1 -> cadastrarQuartos()
+        2 -> cadastrarHospedes()
+        3 -> AbastecimentoDeAutomoveis()
+        4 -> sairDoHotel()
+        else -> erro()
+    }
+}
+
+fun cadastrarQuartos() {
+    //todos os 20 quartos livres ao iniciar o hotel
+    
+}
+
+fun AbastecimentoDeAutomoveis() {
+
+}
+
+fun sairDoHotel() {
+    println("Você deseja sair?\n Informe 1 para \"sim\" e 0 para \"não\"")
+    val confirma = readln().toBoolean() // digite true ou false ou 1 ou 0
+    if (confirma) {
+        println("Muito obrigada e até logo, $nome!")
+    } else {
+        iniciar()
+    }
+}
+
+fun erro(){
+    println("Por favor, informe um número entre 1 e 4.")
+    iniciar()
+}
